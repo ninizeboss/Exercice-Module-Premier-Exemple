@@ -27,6 +27,10 @@ namespace NombreCache
         static void Main(string[] args)
         {
             int valeur, essai, nbre = 1;
+            int borneHaute = 100, borneBasse=0 ;
+            int difference;
+            int moitieDifference;
+
             //Contrôle de la valeur saisie pour le nombre caché
             valeur = saisie("Entrer le nombre caché (entre 0 et 100) : ");
             Console.Clear();
@@ -39,11 +43,19 @@ namespace NombreCache
             {
                 if (essai > valeur)
                 {
-                    Console.WriteLine(essai + " est plus grand que le nombre caché.");
+                    borneHaute = essai;
+                    Console.WriteLine(essai + " est plus grand que le nombre caché, essayez entre la moitié de "+borneBasse+" et "+borneHaute+".");
+                    difference = borneHaute - borneBasse;
+                    moitieDifference = difference/2;
+                    Console.WriteLine("Essayez " + (borneBasse + moitieDifference));
                 }
                 else
                 {
+                    borneBasse = essai;
                     Console.WriteLine(essai + " est plus petit que le nombre caché.");
+                    difference = borneHaute - borneBasse;
+                    moitieDifference = difference / 2;
+                    Console.WriteLine("Essayez " + (borneBasse + moitieDifference));
                 }
 
                 essai = saisie("Entrer un essai (entre 0 et 100) : ");
